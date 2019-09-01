@@ -1,0 +1,40 @@
+将项目部署到云服务器上
+	1、在云服务器上安装Apache服务器
+
+
+	将项目一动到云服务器上
+	文件的上传于下载 ftp协议
+	http
+	浏览器于服务器数据交互使用http协议
+	客户端与服务器文件交互使用ftp协议
+
+	工具
+		1、ftp工具： 文件交换
+			安装cyberduck或者winSCP（Windows）软件进行文件上传于下载
+		2、ssh工具： 远程链接工具
+			安装putty或者Xshell或者secureCRT进行远程终端访问
+
+
+命令：
+	ls 查找文件
+	ls -a 查看隐藏文件
+	cd 打开某一个东西
+	cd /  打开家目录
+	pwd 查看完整路径
+	ps -ef 找出所有进程
+	/home  是其他用户的家目录 开始 根目录
+	~ 家目录 某一个用户的家目录的开始
+
+
+
+	sudo apt-get install apache2 安装apache(sudo临时提升权限执行后面命令)
+
+	Apache中创建文件
+	 touch a.txt
+	 (Permission 权限拒绝 解决方法 sodu暂时提升权限)
+	更改权限为777
+	    sudo chmod -R 777 /var/www/html
+	    	a.txt index.html
+	man 帮助手册
+		man chmod
+		man ls

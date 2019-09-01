@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模态框</title>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<script src="../../jQuery/js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script>
+		$(function(){
+			//区分新增和修改,修改的时候需要额外传递当前修改的对象的id
+			//代表当前的操作
+			var option = '新增';
+			//代表当前操作的对象的id
+			var currentId = '';
+			//保存
+			$('#to-save').click(function(){
+				//获取数据,封装成对象,传递给后台
+				var username = $('.modal [type=text]').val();
+				var password = $('.modal [type=password]').val();
+				var gender = $('.modal [name=gender]:checked').val();
+				console.log(username,password,gender);
+				if(username&&password&&gender){
+					// 封装数据,对接口
+					var obj = {
+						name:username,
+						password:password,
+						gende:gender
+					};
+					if(option==='修改'){
+						obj.id = currentId;
+					}
+					console.log('传递给后台的数据是:',obj);
+					//提交数据给后台
+					//提交成功后的回调函数里,更新数据,关闭模态框.
+					$('#myModal').modal('hide');
+				}else{
+					alert('请输入完整的信息');
+				}
+			});
+			//新增按钮
+			//保存方法
+			$('#to-add').click(function(){
+				//设置option
+				option = '新增';
+				//清空表单数据,显示模态框
+				$('.modal [type=text],.modal [type=password]').val(null);
+				//prop('checked',false)设置不选中的状态
+				$('.modal [type=radio]:checked').prop('checked',false);
+				//设置模态框的标题
+				$('.modal-title').text(option+'学生信息');
+				$('#myModal').modal('show');
+			});
+			//修改按钮,填充表单内容
+			$('#to-update').click(function(){
+				//设置option
+				option = '修改';
+				//假设是当前要修改的对象
+				//可以通过修改按钮,获取当前对象的id,拿到id之后,向后台要数据
+				var obj = {
+					name:'zhangsan',
+					password:123,
+					gender:'女',
+					id:1001
+				};
+				//设置currentId
+				currentId = obj.id;
+				//设置值
+				$('.modal [type=text]').value(obj.name);
+				$('.modal [type=password]').value(obj.password);
+				$('.modal [type=radio][value='+obj.gender+']').prop('checked',true);
+				// 设置模态框的标题
+				$('.modal-title').text(option+'学生信息');
+				//显示模态框
+				$('#myModal').modal('show');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<!-- <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">新增</button> -->
+		<button class="btn btn-primary" id="to-add">新增</button>
+		<button class="btn btn-primary" id="to-update">修改</button>
+	</div>
+	<!-- 模态框 -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button class="btn btn-default close" data-dismiss="modal">&times;</button>
+					<span>模态框的标题</span>
+				</div>
+				<div class="modal-body">
+					<!-- 录入信息表单 -->
+					<form action="" class="form-horizontal">
+						<div class="form-group">
+							<label for="username" class="col-sm-2 control-label">用户名:</label>
+							<div class="col-sm-10">
+								<input id="username" type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-sm-2 control-label">密码:</label>
+							<div class="col-sm-10">
+								<input id="password" type="password" class="form-control">
+							</div>
+						</div>
+						<!-- 性别 -->
+						<div class="form-group">
+							<label for="male" class="col-sm-2 control-label">性别:</label>
+							<div class="col-sm-10">
+								<div class="radio-inline">
+									<label for="male">
+										<input id="male" type="radio" name="gender" value="男">男
+									</label>
+								</div>
+								<div class="radio-inline">
+									<label for="female">
+										<input id="female" type="radio" name="gender" value="女">女
+									</label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" data-dismiss="modal">取消</button>
+					<button class="btn btn-primary" id="to-save">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

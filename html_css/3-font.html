@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字体</title>
+	<!-- font-awesome 不用下载，占内存小,可以像字体一样修改颜色大小，类似于字体 -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+	<style>
+		i{
+			font-size: 30px;
+			color: coral;
+		}
+		div{
+			/*字体家族*/
+			/*font-family:宋体;*/
+			/*有衬线*/
+			/*font-family:serif;*/
+			/*font-family:sans-serif;*/
+			
+			/*等宽字体*/
+			/*font-family:monospace;*/
+			/*草书*/
+			/*font-family:cursive;*/
+			/*梦幻的*/
+			/*font-family:fantasy;*/
+			/*字体栈*/
+			font-family: 华文行楷,宋体
+		/*网络字体 webfont*/
+		font-family:webfont;			
+		}
+
+		/*声明字体家族*/
+			@font-face{
+				/*字体家族名字*/
+				font-family:'webfont';
+				/*地址*/
+				src:url('./fonts/1.ttf');
+			}
+	</style>
+</head>
+<body>
+	<i class="fa fa-bandcamp"></i>
+	<div>
+		您好，hello
+	</div>
+	<!-- 需要下载，占内存较大，有颜色，但不可以更改，类似于图片 -->
+	<img src="./images/西瓜.png" alt="">
+</body>
+</html>

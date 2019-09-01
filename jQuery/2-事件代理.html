@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件代理</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//用body来代理button的
+			$('body').on('click','button',{id:1001},function(event,a,b){
+				console.log(event,a,b);
+			});
+			//事件解绑
+			// $('body').off('click','button');
+			//模拟事件执行
+			$('button').trigger('click',[1,2]);
+		});
+	</script>
+</head>
+<body>
+	<button>点击我</button>
+</body>
+</html>

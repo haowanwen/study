@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超链接</title>
+</head>
+<body>
+	<h3 id="top">我是顶部</h3>
+<!-- 相对路径（相对于当前目录结构产生的途径）和绝对路径（全路径：固定的网址 http://www.baidu.com 以及
+D:\briup\html_css\day01） -->
+<!-- 访问本地文件系统时必须加file:///c:…… -->
+	<a href="file:///D:\briup\html_css\day01">跳转本地绝对路径</a>
+	<a href="http://www.baidu.com">跳转百度绝对路径</a>
+	<!-- 相对当前所属目录查找 -->
+	<!-- .叫做当前目录，文件所属的文件夹day02 -->
+	<a href="./note.txt">跳转本地的相对路径</a>
+	<!-- ..上一级目录 html_css文件夹 -->
+	<a href="../day01/2-element.html">跳转本地的相对路径</a>
+	<!-- 锚点的跳转 herf值是一个id -->
+	<!-- 测试产生效果，内容必须超过一页 -->
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<a href="#top">返回顶部</a>
+	<!-- 邮箱跳转 -->
+	<a href="mailto:1225216451@qq.com">发送邮件</a>
+
+	<a href="./note.txt" target="_self">在本选项卡跳转</a>
+	<a href="./note.txt" target="_blank">在新建选项卡跳转</a>
+</body>
+</html>

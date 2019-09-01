@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form表单</title>
+</head>
+<body>
+	<!-- action代表表单提交的地址 -->
+	<!-- ./4-h5.html?search=123&search1=234 get方式 -->
+	<!-- get数据提交表单数据携带到URL后面 -->
+	<!-- post方式提交 表单数据包含在HTTP协议的请求报文的体部 -->
+	<!-- ./4-h5.html post方式的参数在请求体中 -->
+	<!-- 前端项目部署 Apache服务器 安装目录 htdocs文件夹 -->
+	<!-- 表单编码格式 enctype=application/x-www-form-urlencoded 将空格转换成+，其他特殊字符用ASICC表示 -->
+	<!-- 文件上传格式	multipart/form-data -->
+	<!-- enctype="text/plain" 空格转换成+，不对其他特殊字符编码，现已不用 -->
+	<form action="./4-h5.html" method="post" enctype="text/plain">
+		<!-- 表单控件 -->
+		<!-- 文本框 -->
+		<!-- name属性的作用：name的属性值，就是最后提交给后台的属性名；表单控件输入的值，是最后提交给后台的属性值 -->
+		<input type="text" name="search" />
+		<!-- input type="text" name="search1" -->
+		<button>提交</button>
+	</form>
+</body>
+</html>

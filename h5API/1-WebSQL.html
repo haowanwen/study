@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSQL数据库</title>
+	<script>
+		// 测试环境：谷歌浏览器
+		window.onload = function(){
+			// 获取所有的button
+			var btns = document.getElementsByTagName('button');
+			// 创建数据库
+			btns[0].onclick = function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				console.log('数据库',db);
+			}
+			// 创建表
+			btns[1].onclick = function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				// 获取事务对象，通过事务对象去执行sql语句
+				db.transaction(function(ts){
+					// ts就是事务对象  executeSql()执行sql语句
+					// 创建student表，有id,name,age,tel字段，属性
+					var sql = 'create table student(id integer,name text,age integer,tel text)';
+					ts.executeSql(sql,[],function(ts,result){
+						//可以在这里追加数据,初始化表
+						console.log('创建表成功',result);
+					},function(ts,error){
+						console.log('创建表失败',error);
+					});
+				});
+			}
+			// 添加数据
+			btns[2].onclick = function(){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// ts-事务对象 注意数据顺序与创建表的字段的顺序保持一致。
+					var sql = "insert into student values(1001,'zhangsan',12,'12312341234')";
+					ts.executeSql(sql,[],function(ts,result){
+						console.log('添加成功',result);
+					},function(ts,error){
+						console.log('添加失败',error);
+					});
+				});
+			}
+			// 修改数据
+			btns[3].onclick = function(){
+				// 获取db
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// 修改rowid为1的记录的名字为王五
+					// ts 事务对象
+					var sql = 'update student set name=? where rowid=?';
+					// 如果进行字符串拼接的形式写的变量，建议在使用之前打印处理看，是不是脑海中的语句
+					// 使用第二个参数，数组，来替换sql语句中的问号占位符，一个一个去替换
+					ts.executeSql(sql,['wangwu',1],function(ts,result){
+						console.log('修改成功',result);
+					},function(ts,error){
+						console.log('修改失败',error);
+					});
+				});
+			}
+			// 查询数据
+			btns[4].onclick = function(){
+				// 使用封装的代码去实现查询的功能
+				getTS(function(ts){
+					var sql = 'select * from student';
+					// ts事务对象
+					ts.executeSql(sql,[],function(ts,result){
+						// result.rows里存放就是所有的数据
+						console.log('查询成功',result.rows);
+						console.log(Array.from(result.rows));
+					},function(ts,error){
+						console.log('查询失败',error);
+					});
+				});
+			}
+			// 删除数据
+			btns[5].onclick = function(){
+				var sql = 'delete from student';
+				MyExe(sql,[],function(result){
+					console.log('删除成功',result);
+				},function(error){
+					console.log('删除失败',error);
+				});
+			}
+			// 删除表
+			btns[6].onclick = function(){
+				var sql = 'drop table student';
+				MyExe(sql,[],function(result){
+					console.log('删除表成功',result);
+				},function(error){
+					console.log('删除表失败',error);
+				});
+			}
+			// 封装WebSQL 获取事务对象
+			function getTS(handle){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// ts是事务对象
+					handle(ts);
+				});
+			} 
+			function MyExe(sql,arr,fun1,fun2){
+				var db = openDatabase('user','1.0','first db',2*1024*1024);
+				db.transaction(function(ts){
+					// ts是事务对象
+					ts.executeSql(sql,arr,function(ts,result){
+						fun1(result);
+					},function(ts,error){
+						fun2(error);
+					});
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>创建数据库</button>
+	<button>创建表</button>
+	<button>添加数据</button>
+	<button>修改数据</button>
+	<button>查询数据</button>
+	<button>删除数据</button>
+	<button>删除表</button>
+
+
+
+
+
+
+
+</body>
+</html>

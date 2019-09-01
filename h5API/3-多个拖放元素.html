@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多个拖放元素-多个目标元素</title>
+	<style>
+		body{
+			height: 500px;
+			border: 1px solid green;
+		}
+		.parent{
+			height: 130px;
+			border: 1px solid red;
+			margin: 10px;
+		}
+		.child{
+			width: 100px;
+			height: 100px;
+			border: 1px solid blue;
+			margin: 10px;
+			float: left;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			//获取拖放元素
+			var childs = document.getElementsByClassName('child');
+			//将类数组对象转成数组
+			childs = Array.from(childs);
+			//获取目标元素
+			var parents = document.getElementsByClassName('parent');
+			parents = Array.from(parents);
+			//绑定事件
+			childs.forEach(function(item){
+				//item ==> 拖放元素
+				item.ondragstart = ds;
+			});
+			parents.forEach(function(item){
+				//item ==> 目标元素
+				item.ondragover = drageo;
+				item.ondrop = dr;
+			});
+			document.body.ondragover = drageo;
+			document.body.ondrop = dr;
+
+
+
+
+
+			//事件处理程序的声明
+			//dragstart
+			function ds(event){
+				var dt = event.dataTransfer;
+				//设置鼠标的样式 copy link 
+				dt.effectAllowed = 'copy';
+				// 设置开始拖放时传递的数据
+				dt.setData('id',this.id);
+			}
+			//dragover
+			function drageo(event){
+				//设置鼠标的样式 copy link
+				event.dataTransfer.dropEffect = 'copy';
+				//将目标元素设置可放置的元素
+				event.preventDefault();
+			}
+			//drop
+			function dr(event){
+				var dt = event.dataTransfer;
+				//获取开始拖放是传递的数据
+				var id = dt.getData('id');
+				//获取拖放的元素
+				var dom = document.getElementById(id);
+				this.appendChild(dom);
+				//阻止冒泡.防止给parent放的时候,放到body里的现象
+				event.stopPropagation();
+				//火狐下,如果出现多选项卡,需要阻止默认行为
+				event.preventDefault();
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="parent"></div>
+	<div class="parent"></div>
+	<div draggable="true" class="child" id="one">1</div>
+	<div draggable="true" class="child" id="two">2</div>
+	<div draggable="true" class="child" id="three">3</div>
+	<div draggable="true" class="child" id="four">4</div>
+	<div draggable="true" class="child" id="five">5</div>
+</body>
+</html>

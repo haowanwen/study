@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		div:last-child{
+			width: 200px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+	/*$(function(){
+			alert(1);
+		});*/
+		//在文档加载完毕之后进行
+		$(document).ready(function(){
+			console.log($('div'));
+			//jQuery中的事件	给所有选中的div绑定了点击事件
+			$('div').click(function(event){
+				// alert(1);
+				console.log(this); //this --> DOM节点
+			});
+			//样式操作	给div背景
+			/*$('div').css('background','red');
+			$('div').css('margin','10px');*/
+			$('div').css({
+				backgroundColor:'red',
+				margin:'10px'
+			});
+			//获取css属性的值
+			console.log($('div').css('width'));	//有多个div的情况下,获取第一个元素的width的值
+		});
+	</script>
+</head>
+<body>
+	<div>hello</div>
+	<div>world</div>
+</body>
+</html>

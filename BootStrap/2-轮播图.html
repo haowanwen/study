@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图-灯箱</title>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<script src="../../jQuery/js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+	<style>
+		.item-inner-content{
+			height: 200px;
+			background-color: coral;
+		}
+		.item-inner-content img{
+			width: 100%;
+			height: 100%
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<!-- 轮播图 -->
+				<!-- slide 从左到右平滑过渡 data-interval轮播时间 -->
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="1000">
+				  <!-- Indicators 标识符 -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				  </ol>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      <!-- <img src="..." alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div> -->
+				      <div class="item-inner-content">
+				      	<img src="../../jQuery/day02/img/img1.jpg" alt="">
+				      </div>
+				      <div class="carousel-caption">
+				        第一张图片
+				      </div>
+				    </div>
+				    <div class="item">
+				      <!-- <img src="..." alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div> -->
+				      <div class="item-inner-content">
+				      	<img src="../../jQuery/day02/img/img2.jpg" alt="">
+				      </div>
+				    </div>
+				    ...
+				  </div>
+
+				  <!-- Controls 左右控制按钮 -->
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+			</div>
+
+
+			<div class="col-sm-6">
+				<!-- 其他内容 -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

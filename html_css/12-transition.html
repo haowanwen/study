@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		div:hover{
+			width: 300px;
+			background: blue;
+			/*过渡的属性 过渡时间 过渡速度 延迟时间*/
+			/*数个属性用,隔开*/
+			/*过渡*/
+			/*transition: width 2s linear 1s,background 2s linear 1s; */
+			/*如果控制多个属性过渡用all*/
+			transition: all 2s linear 1s;  
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

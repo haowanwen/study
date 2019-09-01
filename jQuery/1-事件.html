@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bind</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//点击新增或者修改,改变div内部的内容
+			$('button').bind('click','123',function(event){
+				//event.data = 123
+				/*console.log(event);
+				console.log(1);*/
+				//如果点击了新增按钮
+				//event.target DOM
+				//$(DOM).html()	获取内部内容
+				//$(DOM).text('hello') 不设置参数获取文本,传参设置文本
+				//获取button文本
+				if($(event.target).text()==='新增'){
+					$('div').text('新增学生信息');
+				}else{
+					$('div').text('修改学生信息');
+				}
+			});
+			function handle(){
+				console.log(1);
+			}
+			$('button').click(handle);
+			//解绑
+			$('button').unbind('click',handle);
+
+			$('button').bind({
+				click:function(){},
+				mouseover:function(){},
+			});
+		});
+	</script>
+</head>
+<body>
+	<button>新增</button>
+	<button>修改</button>
+	<div>标题</div>
+</body>
+</html>

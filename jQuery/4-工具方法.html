@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工具方法</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//get函数无参,获取数组,get函数有参,获取索引位置上的元素
+			//将jQuery对象,转换成数组
+			var arr = $('div').get();
+			arr = $('div').toArray();
+			console.log(arr);
+			//获取索引位置上的元素[index] get(index) eq(index)
+			var temp = $('div').get(1);
+			console.log(temp);//DOM
+			console.log($('div').eq(1));//jQuery对象
+			console.log($('div').first());
+			console.log($('div:first'));
+			//过滤	过滤出div文本后缀大于2的
+			$result = $('div').filter(function(index,item){
+				//item == DOM
+				// console.log(item);
+				// 获取内部文本
+				var text = $(item).text();
+				//截取字符串最后一位
+				text = text.slice(text.length-1);
+				return text > 2;
+			});
+			console.log($result);
+
+		});
+	</script>
+</head>
+<body>
+	<div>hello1</div>
+	<div>hello2</div>
+	<div>hello3</div>
+	<div>hello4</div>
+</body>
+</html>

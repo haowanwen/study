@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后代过滤器</title>
+	<style>
+		.outer{
+			border: 1px solid blue;
+			overflow: hidden;
+			float: left;
+			margin: 10px;
+		}
+		.inner{
+			border: 1px solid red;
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin: 10px;
+		}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//选中每一个outer中的第一个inner,选出来三个
+			//可以有多个,作为别人的第一个孩子的
+			var $result = $('.outer .inner:first-child');
+			//只有一个元素,第一个
+			var $result = $('.outer.inner:first');
+			//作为别人的第偶数个孩子的,从1开始
+			var $result = $('.outer.inner:nth-child(even)');
+			$result.css('background','red');
+		});
+	</script>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+	<div class="outer">
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

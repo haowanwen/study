@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制矩形</title>
+	<style>
+		canvas{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			//获取2d上下文对象
+			var context = canvas.getContext('2d');
+			//设置填充样式
+			context.fillStyle = 'pink';
+			//绘制矩形 起始坐标x,y,宽,高
+			context.fillRect(0,0,100,200);
+			//设置边框线的宽度
+			context.lineWidth = 5;
+			// 设置边框线的样式			
+			context.strokeStyle = 'coral';
+			// 绘制边框矩形 起始坐标x,y,宽,高
+			context.strokeRect(100,200,100,100);
+
+			context.strokeStyle = 'red';
+			context.strokeRect(0,300,100,100);
+
+			context.strokeStyle = 'blue';
+			context.strokeRect(200,100,100,100);
+
+			context.strokeStyle = 'pink';
+			context.strokeRect(200,300,100,100);
+
+			//清除矩形框
+			context.clearRect(25,25,50,150);
+			context.clearRect(175,175,50,50);
+			context.clearRect(75,275,50,50);
+
+		}
+	</script>
+</head>
+<body>
+	<!-- 画布的宽高要以属性的形式设置,不能使用style -->
+	<canvas id="canvas" width="400px" height="400px"></canvas>
+</body>
+</html>

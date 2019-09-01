@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+</head>
+<body>
+	<!-- thead  tfoot -->
+	<!-- tr代表一行 -->
+	<!-- td代表单元格，一行中的某一列 -->
+	<!-- border边框宽度 -->
+	<!-- cellspacing 单元格之间的空间 -->
+	<!-- cellpadding 单元格与内容之间的空间 -->
+	<!-- align 水平对齐的一种居中方式 lift 靠左  right 靠右  center 居中 -->
+	<table border="1px" cellspacing="0" cellpadding="0" align="center" bgcolor="red" width="200px">
+	<caption align="bottom">表1-1 学生信息表</caption>
+	<!-- 不写tbody，网页解析时会自动加上 -->
+		<!-- <tbody> -->
+
+		<!-- tr>th*4 -->
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>    
+			<th>性别</th>
+			<th>年龄</th>
+
+		</tr>
+		<tr align="center">
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td>12</td>
+			<td align="center">13</td>
+			<td>14</td>
+		</tr>
+		<!-- </tbody> -->
+	</table>
+	<hr>
+
+	<table width="200px">
+		<caption>表2-1 学生信息表</caption>
+		<thead>
+			<!-- 表头 -->
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+<tbody>
+	<!-- tr*3>td*3 -->
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<!-- 总计 -->
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tfoot>
+</table>
+
+
+<!-- 单元格的合并 -->
+<table width="200px" border="1px" cellspacing="0" cellpadding="0" align="center">
+<colgroup>
+<!-- 没有span值 默认一列 -->
+	<col />
+	<!-- 接下来的三列当做同一列去处理 2、3、4列背景色为pink-->
+	<col span="3" style="background-color:pink;"/>
+</colgroup>
+	<tr>
+	<!-- colspan合并列 合并的部分删除 -->
+		<td colspan="2">11</td>
+		<!-- <td>12</td> -->
+		<td>13</td>
+		<td>14</td>
+	</tr>
+	<tr>
+	<!-- rowspan 合并行 合并的部分删除 -->
+		<td>21</td>
+		<td>22</td>
+		<td rowspan="2">23</td>
+		<td>24</td>
+	</tr>
+	<tr>
+		<td>31</td>
+		<td>32</td>
+		<!-- <td>33</td> -->
+		<td>34</td>
+	</tr>
+	<tr>
+		<td>41</td>
+		<td>42</td>
+		<td>43</td>
+		<td>44</td>
+	</tr>
+	
+</table>
+
+语义化标签
+<header>
+	<img src="" alt="logo">
+	<article>
+		<h2>第一张章</h2>
+		<p>内容
+		</p>
+	</article>
+</header>
+	<footer>
+		&copy;xxxx公司
+	</footer>
+CSS代码
+header，footer,nav,article,section,aside,address{
+	//将元素展现为块级元素
+	display：block;
+}

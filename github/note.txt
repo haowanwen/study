@@ -1,0 +1,48 @@
+远程仓库地址：
+	https://github.com/liuyrSilence/test.git
+首次将远程仓库中内容克隆出来
+	git clone https://github.com/liuyrSilence/test.git
+将本地的文件上传到远程仓库
+	进入到test目录
+	git add *  将所有文件都放到上传列表中
+	git commit -m “第一次提交”  提交到本地仓库，并且写了注释
+	git push origin master 将本地仓库中的内容提交到远程仓库主分支
+其他开发者更改了代码
+拉取仓库内容到本地
+	git pull origin master 更新代码
+
+在提交代码之前先更新。提交完毕之后，告诉同组人去更新。
+
+
+
+	项目
+	A  B  C
+	leader   A B C 
+		A B C
+	SVN github
+		SVN局域网内
+		github面向全网的
+			仓库  存放所有的代码  
+				1版本的代码  2版本的代码
+				。。。
+				可回退版本
+
+				昨天 1.0  A  100行代码
+				今天 2.0 A 130行代码
+				版本回退
+			1.如何创建仓库
+				test
+			2.如果提交代码到仓库
+				day01.txt
+			3.如何从仓库中拉取代码
+				大家去下载day01.txt
+			4.如何邀请别人一起开发
+				你也修改day01.txt
+		远程仓库   .git   github上创建仓库
+		本地仓库   本地缓存
+		本地文件  本地代码
+
+		上传  将本地文件上传到本地仓库，再由本地仓库上传到远程仓库中
+		下载  从远程仓库下载到本地文件
+
+		git工具

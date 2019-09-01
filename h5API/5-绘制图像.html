@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制图像</title>
+	<style>
+		canvas{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			//绘制图像
+			//创建图像节点
+			var image = new Image();
+			// console.log(image);
+			image.src = './images/img-1249b23ae4dafe88197af9fc68593416.jpg';
+			//监听图像装载完成
+			image.onload = function(){
+				//绘制 参数:图像DOM,开始位置坐标x,y,绘制的宽,高
+				context.drawImage(image,0,0,100,100);
+			}
+			//放大镜
+			//image 鼠标滑过,获取鼠标所在的点(event.clientX,screenX),获取左上角点.方形区域,放大.
+
+			//路径裁切
+			/*context.beginPath();
+			context.arc(150,50,50,0,Math.PI*2);
+			// context.fill();
+			context.closePath();
+			//只有在裁切范围内的才能显示出来
+			context.clip();
+			var image = new Image();
+			// console.log(image);
+			image.src = './images/img-1249b23ae4dafe88197af9fc68593416.jpg';
+			image.onload = function(){
+				//绘制 参数:图像DOM,开始位置坐标x,y,绘制的宽,高
+				context.drawImage(image,100,0,200,200);
+			}*/
+
+			//绘制文本
+			//设置字体家族
+			context.font = '30px sans-serif';
+			// context.strokeText('hello',100,100);
+			// 参数:文本 开始绘制的位置x,y
+			context.fillText('hello',100,100);
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="600px" height="400px"></canvas>
+</body>
+</html>

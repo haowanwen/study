@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册页面</title>
+</head>
+<body>
+	<form action="#">
+	<!-- 不写name的值无法提交表单 -->
+	<!-- autofocus自动聚焦	checked单选和复选的默认选中 -->
+	用户名：<input autofocus type="text" name="username"/>
+	<br />
+	密码：<input type="password" name="password"/>
+	<!-- 凡是写在表单内部的button都有提交表单的功能 -->
+	<br />
+	<!-- 同一组之间的单选按钮会出现互斥现象，同一组单选按钮的name必须一样 -->
+	<!-- 表单提交数据，实际上提交的是表单控件的value值 -->
+	性别：<input id="female" type="radio" name="gender" value="女"/>
+	<!-- 点击label的时候点击某个表单控件 for属性代表表单某一个控件的ID值 -->
+	<label for="female">女</label>
+	<input checked id="male" type="radio" name="gender" value="男" />
+	<label for="male">男</label>
+	<br />
+	爱好：<input type="checkbox" name="hobby" checked value="basketball" />篮球
+	<input type="checkbox" name="hobby" value="sing" />唱歌
+	<input type="checkbox" name="hobby" value="dancing" />跳舞
+	<br>
+	<!-- select 的 option 的第一个值是默认选中的值 或者使用selected-->
+	<!-- mutiple	按住Ctrl可以多选 size代表默认显示出来的行数 -->
+	<!-- 籍贯：<select mutiple size="2" name="address"> -->
+	籍贯：<select name="address">
+		<option value="">请选择</option>
+		<option value="shanghai">上海</option>
+		<option value="jiangsu" selected>江苏</option>
+		<option value="jiangxi">江西</option>
+		<!-- disabled禁用 -->
+		<option value="shanxi" disabled>山西</option>
+	</select>
+	<br>
+	<!-- 文本域 cols代表文本域又到少列，rows代表有多少行-->
+	个人简介：<textarea name="info" cols="30" rows="10"></textarea>
+	<br>
+
+
+	<input type="submit" value="提交" name="file" />
+	</form>
+	<hr>
+	<!-- 按照文件流的方式提交 -->
+	<form action="#" enctype="mulipart/form-data" method="post">
+	头像：<input type="file" name="file">
+	<button>提交</button>
+	<input type="reset" value="重置">
+	<input type="submit" value="提交">
+	<!-- 可提交表单 -->
+	<input type="image" src="1-form-register.html" width="50px" height="30px" alt="">
+	<button>可提交</button>
+	<button type="submit">可提交</button>
+	<button type="reset">重置</button>
+	<button type="button">普通按钮不可提交</button>
+	</form>
+	<hr>
+	<form action="">
+	<!-- disabled 禁用,不用提交数据	readonly 只读，提交数据 -->
+		<input type="text" name="id" value="1001" disabled />
+		<input type="text" name="hello" value="张三" readonly />
+		<!-- 将ID显示在type=hidden -->
+		<input type="hidden" name="hidden" value="123">
+		<button>提交</button>
+	</form>
+</body>
+</html>

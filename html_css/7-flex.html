@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒布局-伸缩盒布局-flex布局</title>
+	<style>
+		body{
+			font-size: 20px;
+		}
+		.container{
+			height: 650px;
+			border: 1px solid red;
+			display: flex;
+			/*默认的*/
+			flex-direction: row;
+			/*将项目排在一列*/
+			/*flex-direction: column;*/
+			/*排在一行，起点为右侧*/
+			/*flex-direction: row-reverse;*/
+			/*排在一列，从下往上排*/
+			/*flex-direction: column-reverse;*/
+			/*主轴对齐方式*/
+			/*从主轴的起点对齐，默认的*/
+			/*justify-content: flex-start;*/
+			/*主轴的对齐方式，主轴的终点对齐*/
+			/*justify-content: flex-end;*/
+			/*项目在主轴上居中对齐*/
+			/*justify-content: center;*/
+			/*项目在主轴上，项目与项目之间有空间*/
+			/*justify-content: space-between;*/
+			/*项目四周有空间，*/
+			/*justify-content: space-around;*/
+			/*交叉轴上的对齐方式*/
+			/*交叉轴的终点对齐*/
+			/*align-items: flex-end;*/
+			/*交叉轴的起点对齐*/
+			/*align-items: flex-start;*/
+			/*垂直居中*/
+			/*align-items: center;*/
+			/*如果项目没有设置高，默认的对齐方式,stretch ，内部项目没有设置高度时，拉伸项目高度，占满父元素*/
+			/*align-items: stretch;*/
+			/*基准线对齐，项目内部的文本对齐，项目设置高度*/
+			/*align-items: baseline;*/
+			/*项目多了，一个主轴放不下，可以换行显示*/
+			/*不换行*/
+			/*flex-wrap: nowrap;*/
+			/*换行*/
+			/*flex-wrap: wrap;*/
+			/*多主轴在交叉轴上的对齐方式*/
+			/*在交叉轴上起点对齐*/
+			/*align-content: flex-start;*/
+			/*在交叉轴终点对齐*/
+			/*align-content: flex-end;*/
+			/*在交叉轴上居中对齐*/
+			/*align-content: center;*/
+			/*四周有空间*/
+			/*align-content: space-around;*/
+			/*主轴与主轴之间有空间*/
+			/*align-content: space-between;*/
+			/*默认的，拉伸这两个主轴，让他们占满交叉轴*/
+			/*align-content: stretch;*/
+
+			/*集合属性*/
+			/*flex-flow:flex-direction flex-wrap */
+			flex-flow: row wrap;
+
+
+
+
+		}
+		.container>div{
+			width: 200px;
+			/*height: 200px;*/
+			/*平分父容器在主轴上的空间*/
+			flex: 1;
+			border: 1px solid blue;
+		}
+		div.one{
+			/*最小占据主轴上的空间*/
+			/*flex-basis: 200px;*/
+			/*最少占父容器200px，如果还有剩余的空间，再占一份*/
+			/*flex: 200px 1;*/
+			/*height: 100px;
+			padding: 10px;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="one">one</div> 
+		<div class="two">two</div>
+		<div class="three">three</div>
+		
+	</div>
+</body>
+</html>

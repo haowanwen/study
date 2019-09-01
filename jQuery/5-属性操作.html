@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性操作</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//通过属性名,获取属性值
+			console.log($('div').attr('title')); //hello
+			console.log($('div').attr('data-id')); //1001
+			// 获取布尔属性
+			console.log($('input').attr('checked')); //checked
+
+			console.log($('div').prop('title')); //hello
+			console.log($('div').prop('data-id')); //undefined
+			console.log($('input').prop('checked')); //true
+			//使用attr操作正常的属性和自定义的属性,使用prop操作布尔属性
+			//设置属性值
+			/*$('div').attr('title','设置之后的值');
+			$('div').attr('data-id','设置之后的id值');
+			$('input').attr('checked',false);//设置的值一定是一个布尔类型的值*/
+
+			/*$('div').prop('title','设置之后的值');
+			$('div').prop('data-id','设置之后的id值');	//自定义属性不生效
+			$('input').prop('checked',false);*/
+
+			//删除属性
+			/*$('div').removeAttr('title');
+			$('div').removeAttr('data-id');
+			$('input').removeAttr('checked');*/
+
+			//不推荐使用removeProp
+			/*$('div').removeProp('title'); //不生效
+			$('div').removeProp('data-id'); //不生效
+			$('input').removeProp('checked'); //不生效 */
+			
+		});
+	</script>
+</head>
+<body>
+	<div title="hello" data-id="1001">hello</div>
+	<input type="checkbox" checked>复选框默认被选中
+</body>
+</html>

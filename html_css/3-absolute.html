@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		.one{
+			background-color: coral;
+		}
+		.two{
+			background-color: cyan;
+			/*绝对定位脱离文档流，原先位置不保留*/
+			position: absolute;
+			/*如果没有属性的设置，是在原先位置飘起来,相对于视口区的左上角*/
+			left: 10px;
+			top: 10px;
+			
+		}
+		.three{
+			background-color: navy;
+		}
+	</style>
+</head>
+<body>
+	<!-- 相对于视口区定位 -->
+	<div class="one">one</div>
+	<div class="two">two</div>
+	<div class="three">three</div>
+</body>
+</html>

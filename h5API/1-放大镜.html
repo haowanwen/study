@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.parent{
+			border: 1px solid blue;
+			position: relative;
+			width: 400px;
+			height: 400px;
+			margin-left: 100px;
+			margin-top: 100px;
+		}
+		canvas{
+			border: 1px solid red;
+		}
+		#big-canvas{
+			position: absolute;
+			left: 400px;
+			top: 100px;
+			display: none;
+		}
+		#bd-canvas{
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0.4;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var parent = document.getElementsByClassName('parent')[0];
+			//获取canvas和context
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			var bigCanvas = document.getElementById('big-canvas');
+			var bigContext = bigCanvas.getContext('2d');
+
+			var bdCanvas = document.getElementById('bd-canvas');
+			var bdContext = bdCanvas.getContext('2d');
+			//绘制第一个canvas中的图片
+			var img = new Image();
+			img.src = './images/img-1249b23ae4dafe88197af9fc68593416.jpg';
+			img.onload = function(){
+				context.drawImage(img,0,0,400,400);
+			}
+			//绘制第三个canvas波点图片
+			var img2 = new Image();
+			img2.src = './images/bd.jpg';
+			img2.onload = function(){
+				bdContext.drawImage(img2,0,0,80,80);
+			}
+			//将第一个画布中的,100,100 开始的,100*100宽高的区域,绘制到第二个画布中的0,0位置开始的,200*200的宽高的
+			/*var img3 = new Image;
+			img3.src = './images/img-1249b23ae4dafe88197af9fc68593416.jpg';
+			img3.onload = function(){
+				bigContext.drawImage(canvas,100,100,100,100,0,0,200,200);				
+			}*/
+			canvas.onmousemove = function(event){
+				//显示第二个画布和第三个画布
+				bigCanvas.style.display = 'block';
+				bdCanvas.style.display = 'block';
+				//开始复制的位置的x.y
+				//event.clientX,event.clientY光标在视口区的位置
+				//DOM.offsetLeft,DOM.offsetTop某个DOM节点的上偏移
+				var sx = event.pageX-parent.offsetLeft-40;
+				var sy = event.pageY-parent.offsetTop-40;
+				/*console.log(sx,sy);
+				console.log(event.pageX,event.pageY);*/
+				//event.pageX,event.pageY光标在文档-页面上的位置
+				//event.screenX,event.screenY光标在屏幕的位置
+				//if(sx>0&&sy>0&&sx<320&&sy<320){
+				//清空bigContext画布					
+					bigContext.clearRect(0,0,200,200);
+					bigContext.drawImage(canvas,sx,sy,80,80,0,0,200,200);
+				//}
+				//控制波点画布的位置
+				bdCanvas.style.left = sx + 'px';
+				bdCanvas.style.top = sy + 'px';
+			}
+			//光标离开时设置其他两个隐藏
+
+			parent.onmouseleave = function(){
+				bigCanvas.style.display = 'none';
+				bdCanvas.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="parent">
+		<!-- 原图 -->
+		<canvas id="canvas" width="400px" height="400px"></canvas>
+		<!-- 放大区域,位置不变,内容跟随鼠标 -->
+		<canvas id="big-canvas" width="200px" height="200px"></canvas>
+		<!-- 半透明波点区域,位置跟随鼠标移动 -->
+		<canvas id="bd-canvas" width="80px" height="80px"></canvas>
+	</div>
+</body>
+</html>

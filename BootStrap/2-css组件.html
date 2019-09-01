@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图标-alert</title>
+	<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css">
+	<script src="../../jQuery/js/jquery-3.4.1.min.js"></script>
+	<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		body{
+			overflow-x: hidden;
+		}
+		.info-div{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			top: 10px;
+			right: -210px;
+			opacity: 0;
+			/*display:none;	*/
+		}
+	</style>
+	<script>
+		$(function(){
+			// 点击删除按钮之后,弹出框显示,三秒后消失
+			$('#del-btn').click(function(){
+				// $('.info-div').removeClass('hidden');
+				// $('.info-div').fadeIn(1000);
+				$('.info-div').animate({
+					right:'10px',
+					opacity:1
+				});
+				// 2秒之后消失,消失时间持续1秒
+				setTimeout(function(){
+					$('.info-div').fadeOut(1000,function(){
+						$('.info-div').css({
+							display:'block',
+							right: '-210px',
+							opacity: 0
+						});
+					});
+				},2000);
+			});
+			$('#close-btn').click(function(){
+				$('.info-div').fadeOut(1000,function(){
+					$('.info-div').css({
+						right:'-210px',
+						opacity:0,
+						display:'block'
+					});
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="well">
+			<!-- 图标按钮 -->
+			<button class="btn btn-primary">
+				<!-- 空span放图标 -->
+				<span class="glyphicon glyphicon-download"></span>下载				
+			</button>
+			<button class="btn btn-success" id="del-btn">删除</button>
+			<!-- alert组件 -->
+			<div class="alert alert-danger alert-dismissable">
+			<!-- data-dismiss="alert" 依赖于boostrap,而boostrap依赖jQuery,所以导入先导jQuery,再导入bootstrap.否则无效 -->
+				<button data-dismiss="alert" class="close">&times;</button>
+				<div>hello</div>
+			</div>
+		</div>
+	</div>
+	<!-- 右上角的提示框 -->
+	<div class="info-div">
+		<div class="alert alert-success alert-dismissable">
+			<!-- <button class="close" data-dismiss="alert">&times;</button> -->
+			<button class="close" id="close-btn">&times;</button>
+			<div>删除成功</div>
+		</div>				
+	</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>H5新增的标签</title>
+	<style>
+		header,footer,nav,aside,article,section,img{
+			/*块级显示（将其他元素转换成块级元素）*/
+			display:block;
+		}
+		img{
+			width:100px;
+			height:100px;
+		};
+	</style>
+</head>
+<body>
+	<header>
+		<h2>学生管理系统</h2>
+		<img src="./images/7.jpg" alt="图片迷路了">
+	</header>
+	<article>
+		<section>
+			<figure>
+				<img src="./images/6.jpg" alt="">
+				<!-- figcaption最多只能放一个 -->
+				<figcaption>
+					这是图片一
+				</figcaption>
+			</figure>
+		</section>
+	</article>
+	<details open>
+	<!-- summary 标题 -->
+		<summary>HTML</summary>
+		<dd>hello 我是来解释的，HTML是超文本标记语言，全称是Hyper Text Markup Language</dd>
+		<figure>
+				<img src="./images/6.jpg" alt="">
+				<!-- figcaption最多只能放一个 -->
+				<figcaption>
+					这是图片一
+				</figcaption>
+			</figure>
+	</details>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>z-index</title>
+	<style>
+		.one{
+			width: 200px;
+			height: 200px;
+			/*background-color: rgba(255,0,0,0.5);*/
+			/*opacity连字一起设置透明度*/
+			background-color: red;
+			opacity: 0.5;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			/*z-index默认为0*/
+			/*z-index: 0;*/
+			/*z-index: 1;*/
+		}
+		.two{
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="two">two</div>
+</body>
+</html>
